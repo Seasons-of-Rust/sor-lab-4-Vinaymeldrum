@@ -12,10 +12,10 @@ pub struct Card {
 impl Card {
     pub fn fight(&self, other: &Card) -> FightResult {
         let mut tuple = (false, false);
-        if self.damage > other.health {
+        if self.damage >= other.health {
             tuple.0 = true
         } 
-        if other.damage > self.health {
+        if other.damage >= self.health {
             tuple.1 = true;
         }
         match tuple {
