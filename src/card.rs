@@ -11,9 +11,28 @@ pub struct Card {
 
 impl Card {
     pub fn fight(&self, other: &Card) -> FightResult {
-        todo!()
+        let mut tuple = (false, false);
+        if self.damage >= other.health {
+            tuple.0 = true
+        } 
+        if other.damage >= self.health {
+            tuple.1 = true;
+        }
+        match tuple {
+            (true, false) =>{
+                FightResult::Win
+            }
+            (false, true) =>{
+                FightResult::Loss
+            }
+            (false, false) =>{
+                FightResult::Draw
+            }
+            (true, true) => {
+                FightResult::Tie
+            }
+        }
     }
-
     /// Give a play by play of the battle
     pub fn print_fight(&self, other: &Card) -> FightResult {
         println!("\n{} vs {}", &self, other);
